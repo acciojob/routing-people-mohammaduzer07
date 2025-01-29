@@ -6,7 +6,7 @@ const UserDetails = ({users}) =>{
 
     const {id} = useParams();
     const user = users.find((item) => item.id === parseInt(id))
-
+    
     return <div>
        <h1>User Details</h1>
        {user ? (

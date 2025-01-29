@@ -9,22 +9,30 @@ import "regenerator-runtime/runtime";
 const App = () => {
   
   const [users , setUser] = useState([]);
+  const [loading, setLoading] = useState(true); // Track loading state
 
   useEffect(() =>{
     const getList = async () =>{
       try {
+        setLoading(true)
         const res = await fetch("https://jsonplaceholder.typicode.com/users")
         const resJson = await res.json();
         setUser(resJson);
-
       } catch (error) {
         console.error("Error fetching user list:", error);
+      }
+      finally{
+        setLoading(false)
       }
     }
     getList()
   }, [])
 
-  
+  if (loading) {
+    return <div>Loading...</div>; // Show loading message
+  }
+
+
   return (
     <div>
         {/* Do not remove the main div */}
