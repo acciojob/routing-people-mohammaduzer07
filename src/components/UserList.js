@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 
 const UserList = ({users}) =>{
 
+    if(users.length === 0){
+        return <div>Loading...</div>
+     }
 
     return <div>
         <h1>User List</h1>
